@@ -2,7 +2,7 @@ FROM alpine:latest
 MAINTAINER Ömer ÜCEL <omerucel@gmail.com>
 
 RUN apk update && apk add \
-    bash
+    bash \
     nginx \
     php-fpm \
     php-json \
