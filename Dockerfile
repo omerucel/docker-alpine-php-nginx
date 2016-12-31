@@ -22,9 +22,11 @@ RUN apk --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/edge/commun
     php7-curl \
     php7-iconv \
     php7-mbstring \
-    php7-zlib
-RUN echo "PS1='[\u@\h:\w] $ '" > /root/.bashrc
-RUN curl -sS https://getcomposer.org/installer | php7 && \
+    php7-zlib && \
+    echo "PS1='[\u@\h:\w] $ '" > /root/.bashrc && \
+    ln -s /usr/bin/php7 /usr/bin/php && \
+    ln -s /usr/sbin/php-fpm7 /usr/sbin/php-fpm && \
+    curl -sS https://getcomposer.org/installer | php && \
     mv composer.phar /usr/local/bin/composer
 WORKDIR /data/project
-CMD ["php-fpm7", "-F", "-R", "-O"]
+CMD ["php-fpm", "-F", "-R", "-O"]
