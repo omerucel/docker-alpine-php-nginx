@@ -19,7 +19,10 @@ RUN apk --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/edge/commun
     php7-iconv \
     php7-mbstring \
     php7-zlib \
-    php7-session && \
+    php7-session \
+    php7-ctype \
+    php7-xml \
+    php7-dom && \
     echo "PS1='[\u@\h:\w] $ '" > /root/.bashrc && \
     ln -s /usr/sbin/php-fpm7 /usr/sbin/php-fpm && \
     curl -sS https://getcomposer.org/installer | php && \
