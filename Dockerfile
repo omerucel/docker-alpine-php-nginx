@@ -1,10 +1,6 @@
 FROM alpine:latest
 MAINTAINER Ömer ÜCEL <omerucel@gmail.com>
 
-RUN apk --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/edge/main/ \
-    add \
-    libressl2.4-libssl \
-    libressl2.4-libcrypto
 RUN apk --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/edge/community/ \
     add \
     curl \
@@ -22,9 +18,9 @@ RUN apk --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/edge/commun
     php7-curl \
     php7-iconv \
     php7-mbstring \
-    php7-zlib && \
+    php7-zlib \
+    php7-session && \
     echo "PS1='[\u@\h:\w] $ '" > /root/.bashrc && \
-    ln -s /usr/bin/php7 /usr/bin/php && \
     ln -s /usr/sbin/php-fpm7 /usr/sbin/php-fpm && \
     curl -sS https://getcomposer.org/installer | php && \
     mv composer.phar /usr/local/bin/composer
